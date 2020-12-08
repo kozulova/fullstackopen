@@ -1,0 +1,26 @@
+
+browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+Server-->browser: HTML code
+browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server-->browser: main.css
+browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+Server-->browser: spa.js
+note over browser: 
+browser starts executing 
+json data from server
+end note
+browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Server-->browser: [{"content":"submit form ","date":"2020-12-07T16:57:50.391Z"},
+note over browser: 
+browser executes event handlers
+that renders notes
+end note
+note left of browser: browser sends request on saving new Note
+
+browser->Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+note right of Server: Server saves new note
+Server-->browser: Server sends 201 response code
+note over browser: 
+browser executes event handlers
+that renders updated notes
+end note
